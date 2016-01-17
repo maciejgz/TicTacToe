@@ -1,6 +1,5 @@
 package pl.mg.ttt.data.model;
 
-import javax.persistence.Column;
 import java.io.Serializable;
 
 /**

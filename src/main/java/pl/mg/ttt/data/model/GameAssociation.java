@@ -39,4 +39,14 @@ public class GameAssociation {
     private Game game;
 
 
+    @Override
+    public String toString() {
+        return "GameAssociation{" +
+                "username='" + username + '\'' +
+                ", game_id=" + game_id +
+                ", userStatus='" + userStatus + '\'' +
+                ", user=" + user +
+                ", game=" + game +
+                '}';
+    }
 }
