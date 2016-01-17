@@ -8,9 +8,15 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity3.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by m on 2016-01-10.
@@ -20,6 +26,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 @ComponentScan("pl.mg.ttt")
 public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
 
+
     @Bean
     @Description("Thymeleaf template resolver serving html5")
     public ServletContextTemplateResolver templateResolver() {
@@ -27,7 +34,6 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         templateResolver.setPrefix("/WEB-INF/templates/");
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode("HTML5");
-
         return templateResolver;
     }
 
@@ -36,6 +42,9 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
+        Set<IDialect> additionalDialects = new HashSet<>();
+        additionalDialects.add(new SpringSecurityDialect());
+        templateEngine.setAdditionalDialects(additionalDialects);
         return templateEngine;
     }
 
@@ -50,4 +59,12 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
     }
+
+    @Bean
+    public SpringSecurityDialect springSecurityDialect() {
+        SpringSecurityDialect dialect = new SpringSecurityDialect();
+        return dialect;
+    }
+
+
 }

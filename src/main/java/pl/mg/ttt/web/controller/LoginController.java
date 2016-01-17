@@ -18,7 +18,7 @@ public class LoginController {
     @RequestMapping("/logout")
     public String logout(){
         System.out.println("/logout");
-        return "/";
+        return "login";
     }
 
 }
