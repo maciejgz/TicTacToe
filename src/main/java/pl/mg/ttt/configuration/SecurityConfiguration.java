@@ -1,6 +1,8 @@
 package pl.mg.ttt.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -18,9 +20,11 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
+@ComponentScan("pl.mg.ttt")
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    @Qualifier("authorizationDatasource")
     DataSource dataSource;
 
     @Autowired

@@ -22,4 +22,14 @@ public class DatabaseConfigration {
         return driverManagerDataSource;
     }
 
+
+    @Bean(name = "tttDatasource")
+    public DriverManagerDataSource tttDatasource() {
+        DriverManagerDataSource tttDatasource = new DriverManagerDataSource();
+        tttDatasource.setDriverClassName("com.mysql.jdbc.Driver");
+        tttDatasource.setUrl("jdbc:mysql://localhost:3306/tictactoe2");
+        tttDatasource.setUsername("admin2");
+        tttDatasource.setPassword("qaz1232");
+        return tttDatasource;
+    }
 }

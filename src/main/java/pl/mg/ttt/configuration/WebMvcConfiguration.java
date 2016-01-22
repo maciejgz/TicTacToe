@@ -65,6 +65,4 @@ public class WebMvcConfiguration extends WebMvcConfigurerAdapter {
         SpringSecurityDialect dialect = new SpringSecurityDialect();
         return dialect;
     }
-
-
 }
