@@ -21,5 +21,4 @@ public class UserRepositoryTest {
     public void simpleTest() {
 
     }
-
 }
