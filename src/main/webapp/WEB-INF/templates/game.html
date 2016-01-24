@@ -8,16 +8,9 @@
 </head>
 <body>
 <div th:replace="fragments/logout_fragment"></div>
-<!--
-<div th:text="${#authentication.name}">-->
 <div>Logged user: <span th:text="${#authentication.name}">Bob</span></div>
-
+Game
 <p>
-
-<form action="#" th:action="@{/new_game}" th:object="${startGameFormPojo}" method="post">
-    <div th:with="${startGameFormPojo.createNewGame}=true"></div>
-    <button type="submit" name="newGame">Stworz gre</button>
-</form>
 </p>
 
 
